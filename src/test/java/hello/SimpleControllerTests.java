@@ -19,15 +19,21 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.springstudy.domain.Country;
+import com.springstudy.service.DemoService;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(locations = { "classpath:/configs/spring-servlet.xml" })
+@ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring-servlet.xml","classpath:/configs/applicationContext.xml" })
 
 @TransactionConfiguration(defaultRollback = true)
 @Transactional
 public class SimpleControllerTests {
 	@Autowired
 	private WebApplicationContext wac;
+	@Autowired
+	DemoService demoService;
+	
 
 	private MockMvc mockMvc;
 	private MockHttpSession session;
@@ -40,8 +46,15 @@ public class SimpleControllerTests {
 
 	@Test
 	public void getTestMsg() throws Exception {
-		// get using get
 		this.mockMvc.perform((get("/hello")).accept(MediaType.ALL)).andExpect(status().isOk()).andDo(print()); // print
+	}
+	
+	@Test
+	public void insert() {
+		Country country = new Country();
+		country.setAbbr("2222");
+		country.setName("adfdfd");
+		demoService.save(country);
 	}
 
 }
