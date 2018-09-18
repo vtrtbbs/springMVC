@@ -12,13 +12,11 @@
 	</context-param>
 
 	<!-- Spring监听 -->
-
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
 	<!-- Spring MVC配置 -->
-
 	<servlet>
 		<servlet-name>Dispatcher</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -26,25 +24,18 @@
 			<param-name>contextConfigLocation</param-name>
 			<param-value>/WEB-INF/spring-servlet.xml</param-value>
 		</init-param>
-
 		<load-on-startup>1</load-on-startup>
-
 	</servlet>
 
 	<!-- spring mvc 请求后缀 -->
 
 	<servlet-mapping>
-
 		<servlet-name>Dispatcher</servlet-name>
-
 		<url-pattern>/</url-pattern>
-
 	</servlet-mapping>
 
 	<welcome-file-list>
-
 		<welcome-file>index.jsp</welcome-file>
-
 	</welcome-file-list>
 
 </web-app>
