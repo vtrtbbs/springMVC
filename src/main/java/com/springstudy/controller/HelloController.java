@@ -28,7 +28,9 @@ public class HelloController {
 	
 	@RequestMapping("/test")
 	public String test() {
+
 		return "测试下看有用吗44";
+
 	}
 	
 	
