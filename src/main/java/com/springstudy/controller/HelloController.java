@@ -25,4 +25,11 @@ public class HelloController {
 		mv.setViewName("hello");
 		return mv;
 	}
+	
+	@RequestMapping("/test")
+	public String test() {
+		return "测试下看有用吗";
+	}
+	
+	
 }
